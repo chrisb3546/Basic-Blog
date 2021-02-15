@@ -1,6 +1,7 @@
 class BlogsController < ApplicationController
     before_action :find_blog, only: [:show, :edit,:update,:destroy]
     before_action :redirect_if_not_logged_in, only: [:new, :edit]
+    before_action :verify_current_user, only: [:edit, :destroy]
 
     def show
     end
@@ -20,6 +21,7 @@ class BlogsController < ApplicationController
     end
 
     def edit
+        
     end
 
     def update
@@ -32,6 +34,8 @@ class BlogsController < ApplicationController
     end
 
     def destroy
+        @blog.destroy
+        redirect_to root_path
 
     end
 
@@ -43,6 +47,12 @@ class BlogsController < ApplicationController
 
     def find_blog
         @blog = Blog.find_by(id: params[:id])
+    end
+
+    def verify_current_user
+        if @blog.user_id != current_user.id
+            redirect_to user_path(current_user)
+        end
     end
 
 end

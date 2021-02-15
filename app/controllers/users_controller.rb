@@ -37,6 +37,8 @@ class UsersController < ApplicationController
 
     def destroy
         #if logged in
+        @user.destroy 
+        redirect_to root_path
 
     end
 
