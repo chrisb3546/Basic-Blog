@@ -1,2 +1,11 @@
 <h1>User</h1>
 <%=@user.username%>
+<%@user.blogs.each do |blog|%>
+<ul>
+<li><%= link_to blog.title, blog_path(blog) %></li>
+</ul>
+<%end%>
+
+<%= link_to 'Log Out', logout_path, method: "delete" %>
+<%= link_to 'New Blog', new_blog_path %>
+<%= link_to 'See All Users', users_path %>
