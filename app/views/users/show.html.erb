@@ -1,9 +1,25 @@
-<h1><%=@user.username%></h1>
+<h1 class="text-center mt-4"><%=@user.username%></h1>
 
 <%@user.blogs.each do |blog|%>
-<ul>
-<li><%= link_to blog.title, blog_path(blog) %></li>
-</ul>
+<div class='container'>
+    <div class='row justify-content-md-center'>
+        <div class="col-8 mt-4">
+            <div class="card text-center">
+            <div class="card-header">
+                By <%= @user.username%>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><%=blog.title%></h5>
+                <p class="card-text"><%=truncate(blog.content)%></p>
+                <%= link_to 'See More', blog_path(blog), class:"btn btn-primary" %>
+            </div>
+            <div class="card-footer text-muted">
+                <%= blog.created_at.strftime("%m-%d-%Y")%>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
 <%end%>
 
 
