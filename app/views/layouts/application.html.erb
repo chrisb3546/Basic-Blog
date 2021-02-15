@@ -11,17 +11,9 @@
 
   
   
-  <body >
+  <body class="d-flex flex-column">
   <%=render 'layouts/navbar' %>
-<br>
- 
- <%if logged_in?%>
-  <%= link_to 'Log Out', logout_path, method: "delete" %>
-  <%= link_to 'Home', root_path %>
-  <%else%>
-  <%= link_to 'Home', root_path %>
-  <%end%>
-  
+
     <%= yield %>
   </body>
 </html>
