@@ -3,6 +3,9 @@ class BlogsController < ApplicationController
     before_action :redirect_if_not_logged_in, only: [:new, :edit]
     before_action :verify_current_user, only: [:edit, :destroy]
 
+    def index
+        @blogs = Blog.paginate(page: params[:page], per_page: 3)
+    end
     def show
     end
 

@@ -1,0 +1,32 @@
+
+<div class="apple_pagination">
+    <%= will_paginate @blogs, :container => false %>
+  </div>
+
+
+
+<%@blogs.each do |blog|%>
+<div class='container'>
+    <div class='row justify-content-md-center'>
+        <div class="col-8 mt-4">
+            <div class="card text-center">
+            <div class="card-header">
+                By <%= blog.user.username%>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><%=blog.title%></h5>
+                <p class="card-text"><%=truncate(blog.content)%></p>
+                <%= link_to 'See More', blog_path(blog), class:"btn btn-primary" %>
+            </div>
+            <div class="card-footer text-muted">
+                <%= blog.created_at.strftime("%m-%d-%Y")%>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%end%>
+
+<div class="apple_pagination">
+    <%= will_paginate @blogs, :container => false %>
+  </div>
