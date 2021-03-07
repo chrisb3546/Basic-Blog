@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     before_action :find_user, only: [:show, :edit,:update,:destroy]
+    before_action :redirect_if_not_logged_in, only: [:new, :edit]
 
     def index
         @users = User.all
