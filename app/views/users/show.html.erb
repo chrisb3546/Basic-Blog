@@ -27,7 +27,7 @@
 </div>
 <%end%>
 <div class='container text-center mt-4'>
-<%if logged_in? && (@blog.user_id == current_user.id || current_user.admin?)%>
+<%if logged_in? || current_user.admin?%>
 <%= link_to 'New Blog', new_blog_path, class:"btn btn-primary"  %>
 
 <%= link_to 'Delete Profile', @user, method: "delete", data: {confirm:"are you sure?"}, class:"btn btn-primary" %>

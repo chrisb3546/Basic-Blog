@@ -53,7 +53,7 @@ class BlogsController < ApplicationController
     end
 
     def verify_current_user
-        if @blog.user_id != current_user.id
+        if @blog.user_id != current_user.id && !current_user.admin?
             redirect_to user_path(current_user)
         end
     end
