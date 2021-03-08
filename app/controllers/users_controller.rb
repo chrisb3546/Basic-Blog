@@ -39,9 +39,10 @@ class UsersController < ApplicationController
     end
 
     def destroy
-        #if logged in
         @user.destroy 
-        session.destroy
+        if @user == current_user
+            session.destroy
+        end 
         redirect_to root_path
 
     end
