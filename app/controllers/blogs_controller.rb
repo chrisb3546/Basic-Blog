@@ -20,6 +20,7 @@ class BlogsController < ApplicationController
             flash[:notice] = "successfully created blog!"
         else
             render :new
+            flash[:alert] = "something went wrong, make sure necessary fields are filled out"
         end
 
     end
