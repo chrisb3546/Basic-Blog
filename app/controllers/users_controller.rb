@@ -23,6 +23,7 @@ class UsersController < ApplicationController
             flash[:notice] = "successfully created user!"
         else
             render :new
+            flash[:alert] = "something went wrong, make sure credentials are valid"
         end
     end
 
