@@ -17,6 +17,7 @@ class BlogsController < ApplicationController
         @blog = current_user.blogs.build(blog_params)
         if @blog.save
             redirect_to blog_path(@blog)
+            flash[:notice] = "successfully created blog!"
         else
             render :new
         end
