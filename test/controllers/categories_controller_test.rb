@@ -1,8 +1,9 @@
 require 'test_helper'
 
 class CategoriesControllerTest < ActionDispatch::IntegrationTest
+  
   setup do
-    @category = Category.new(name: "Sports")
+    @category = Category.create(name: "Sports")
   end
 
   test "should get index" do
